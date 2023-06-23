@@ -26,9 +26,9 @@ def main(argv):
     except getopt.GetoptError:
         print(usage_string)
         sys.exit(2)
-    
+
     for opt, arg in opts:
-        if opt == '-h' or opt == '-?':
+        if opt in ['-h', '-?']:
             print(usage_string)
             sys.exit()
         elif opt in ("-i", "--inputfile"):
@@ -39,10 +39,10 @@ def main(argv):
             sort_field = arg
 
     print('Sorting', in_file, 'by', sort_field, 'into', out_file)
-    
+
     with open(in_file) as file:
         data = json.load(file)
-        
+
         # The redirections object within the json
         redirects = data['redirections']
 
